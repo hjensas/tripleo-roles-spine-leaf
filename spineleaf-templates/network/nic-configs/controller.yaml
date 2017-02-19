@@ -102,6 +102,8 @@ parameters:
     type: string
   StorageIpSubnetRouterLeaf3:
     type: string
+  ManagementInterfaceDefaultRoute:
+    type: string
   ManagementInterfaceDefaultRouteLeaf1:
     type: string
   ManagementInterfaceDefaultRouteLeaf2:
