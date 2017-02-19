@@ -73,11 +73,41 @@ parameters:
     description: The IP address of the EC2 metadata server.
     type: string
 
+  InternalApiIpSubnetRouter:
+    type: string
+  InternalApiIpSubnetRouterLeaf1:
+    type: string
+  InternalApiIpSubnetRouterLeaf2:
+    type: string
+  InternalApiIpSubnetRouterLeaf3:
+    type: string
+  TenantIpSubnetRouter:
+    type: string
+  TenantIpSubnetRouterLeaf1:
+    type: string
+  TenantIpSubnetRouterLeaf2:
+    type: string
+  TenantIpSubnetRouterLeaf3:
+    type: string
+  StorageIpSubnetRouter:
+    type: string
+  StorageIpSubnetRouterLeaf1:
+    type: string
+  StorageIpSubnetRouterLeaf2:
+    type: string
+  StorageIpSubnetRouterLeaf3:
+    type: string
+
+
+  InternalApiNetCidr:
+    type: string
   InternalApiNetCidrLeaf1:
     type: string
   InternalApiNetCidrLeaf2:
     type: string
   InternalApiNetCidrLeaf3:
+    type: string
+  StorageNetCidr:
     type: string
   StorageNetCidrLeaf1:
     type: string
@@ -85,11 +115,15 @@ parameters:
     type: string
   StorageNetCidrLeaf3:
     type: string
+  TenantNetCidr:
+    type: string
   TenantNetCidrLeaf1:
     type: string
   TenantNetCidrLeaf2:
     type: string
   TenantNetCidrLeaf3:
+    type: string
+  ManagementNetCidr:
     type: string
   ManagementNetCidrLeaf1:
     type: string
@@ -145,15 +179,15 @@ resources:
                     -
                       default: false
                       ip_netmask: {get_param: InternalApiNetCidr}
-                      next_hop: {get_param: InteranlApiIpSubnetRouterLeaf2}
+                      next_hop: {get_param: InternalApiIpSubnetRouterLeaf2}
                     -
                       default: false
                       ip_netmask: {get_param: InternalApiNetCidrLeaf1}
-                      next_hop: {get_param: InteranlApiIpSubnetRouterLeaf2}
+                      next_hop: {get_param: InternalApiIpSubnetRouterLeaf2}
                     -
                       default: false
                       ip_netmask: {get_param: InternalApiNetCidrLeaf3}
-                      next_hop: {get_param: InteranlApiIpSubnetRouterLeaf2}
+                      next_hop: {get_param: InternalApiIpSubnetRouterLeaf2}
                       
                 -
                   type: vlan

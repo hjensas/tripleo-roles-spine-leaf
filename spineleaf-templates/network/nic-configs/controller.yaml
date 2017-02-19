@@ -82,9 +82,9 @@ parameters:
     type: string
   InternalApiIpSubnetRouterLeaf1:
     type: string
-  InternalApiIpSubnetRouterLeaf1:
+  InternalApiIpSubnetRouterLeaf2:
     type: string
-  InternalApiIpSubnetRouterLeaf1:
+  InternalApiIpSubnetRouterLeaf3:
     type: string
   TenantIpSubnetRouter:
     type: string
