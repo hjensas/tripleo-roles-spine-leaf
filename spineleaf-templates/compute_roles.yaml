@@ -7,11 +7,11 @@ parameter_defaults:
   Leaf1ComputeCount: 1
   Leaf2ComputeCount: 1
   Leaf3ComputeCount: 1
-  Leaf1SchedulerHints:
+  Leaf1ComputeSchedulerHints:
     'capabilities:profile': 'leaf1-compute'
-  Leaf2SchedulerHints:
+  Leaf2ComputeSchedulerHints:
     'capabilities:profile': 'leaf2-compute'
-  Leaf3SchedulerHints:
+  Leaf3ComputeSchedulerHints:
     'capabilities:profile': 'leaf3-compute'
   Leaf1ComputeInternalApiNetName: 'leaf1_internal_api'
   Leaf2ComputeInternalApiNetName: 'leaf2_internal_api'
