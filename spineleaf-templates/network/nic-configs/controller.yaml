@@ -94,7 +94,7 @@ parameters:
     type: string
   TenantIpSubnetRouterLeaf3:
     type: string
-  StorageIpSubnetRouter
+  StorageIpSubnetRouter:
     type: string
   StorageIpSubnetRouterLeaf1:
     type: string
