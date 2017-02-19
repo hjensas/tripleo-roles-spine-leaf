@@ -1,0 +1,261 @@
+heat_template_version: 2015-04-30
+
+description: Create networks to split out Overcloud traffic
+
+parameters:
+  InternalApiNetNameLeaf1:
+    type: string
+  InternalApiSubnetNameLeaf1:
+    type: string
+  InternalApiNetCidrLeaf1:
+    type: string
+  InternalApiAllocationPoolsLeaf1:
+    type: json
+  InternalApiNetValueSpecsLeaf1:
+    type: json
+  InternalApiNetNameLeaf2:
+    type: string
+  InternalApiSubnetNameLeaf2:
+    type: string
+  InternalApiNetCidrLeaf2:
+    type: string
+  InternalApiAllocationPoolsLeaf2:
+    type: json
+  InternalApiNetValueSpecsLeaf2:
+    type: json
+  InternalApiNetNameLeaf3:
+    type: string
+  InternalApiSubnetNameLeaf3:
+    type: string
+  InternalApiNetCidrLeaf3:
+    type: string
+  InternalApiAllocationPoolsLeaf3:
+    type: json
+  InternalApiNetValueSpecsLeaf3:
+    type: json
+
+  StorageNetNameLeaf1:
+    type: string
+  StorageSubnetNameLeaf1:
+    type: string
+  StorageNetCidrLeaf1:
+    type: string
+  StorageAllocationPoolsLeaf1:
+    type: json
+  StorageNetValueSpecsLeaf1:
+    type: json
+  StorageNetNameLeaf2:
+    type: string
+  StorageSubnetNameLeaf2:
+    type: string
+  StorageNetCidrLeaf2:
+    type: string
+  StorageAllocationPoolsLeaf2:
+    type: json
+  StorageNetValueSpecsLeaf2:
+    type: json
+  StorageNetNameLeaf3:
+    type: string
+  StorageSubnetNameLeaf3:
+    type: string
+  StorageNetCidrLeaf3:
+    type: string
+  StorageAllocationPoolsLeaf3:
+    type: json
+  StorageNetValueSpecsLeaf3:
+    type: json
+
+  TenantNetNameLeaf1:
+    type: string
+  TenantSubnetNameLeaf1:
+    type: string
+  TenantNetCidrLeaf1:
+    type: string
+  TenantAllocationPoolsLeaf1:
+    type: json
+  TenantNetValueSpecsLeaf1:
+    type: json
+  TenantNetNameLeaf2:
+    type: string
+  TenantSubnetNameLeaf2:
+    type: string
+  TenantNetCidrLeaf2:
+    type: string
+  TenantAllocationPoolsLeaf2:
+    type: json
+  TenantNetValueSpecsLeaf2:
+    type: json
+  TenantNetNameLeaf3:
+    type: string
+  TenantSubnetNameLeaf3:
+    type: string
+  TenantNetCidrLeaf3:
+    type: string
+  TenantAllocationPoolsLeaf3:
+    type: json
+  TenantNetValueSpecsLeaf3:
+    type: json
+
+  ManagementNetNameLeaf1:
+    type: string
+  ManagementSubnetNameLeaf1:
+    type: string
+  ManagementNetCidrLeaf1:
+    type: string
+  ManagementAllocationPoolsLeaf1:
+    type: json
+  ManagementNetValueSpecsLeaf1:
+    type: json
+  ManagementNetNameLeaf2:
+    type: string
+  ManagementSubnetNameLeaf2:
+    type: string
+  ManagementNetCidrLeaf2:
+    type: string
+  ManagementAllocationPoolsLeaf2:
+    type: json
+  ManagementNetValueSpecsLeaf2:
+    type: json
+  ManagementNetNameLeaf3:
+    type: string
+  ManagementSubnetNameLeaf3:
+    type: string
+  ManagementNetCidrLeaf3:
+    type: string
+  ManagementAllocationPoolsLeaf3:
+    type: json
+  ManagementNetValueSpecsLeaf3:
+    type: json
+
+
+resources:
+
+  ExternalNetwork:
+    type: OS::TripleO::Network::External
+
+  InternalNetwork:
+    type: OS::TripleO::Network::InternalApi
+
+
+  InternalNetworkLeaf1:
+    type: OS::TripleO::Network::InternalApi
+    properties:
+      InternalApiNetName:  { get_param: InternalApiNetNameLeaf1 }
+      InternalApiSubnetName:  { get_param: InternalApiSubnetNameLeaf1 }
+      InternalApiNetCidr:  { get_param: InternalApiNetCidrLeaf1 }
+      InternalApiAllocationPools:  { get_param: InternalApiAllocationPoolsLeaf1 }
+      InternalApiNetValueSpecs:  { get_param: InternalApiNetValueSpecsLeaf1 }
+
+  InternalNetworkLeaf2:
+    type: OS::TripleO::Network::InternalApi
+    properties:
+      InternalApiNetName:  { get_param: InternalApiNetNameLeaf2 }
+      InternalApiSubnetName:  { get_param: InternalApiSubnetNameLeaf2 }
+      InternalApiNetCidr:  { get_param: InternalApiNetCidrLeaf2 }
+      InternalApiAllocationPools:  { get_param: InternalApiAllocationPoolsLeaf2 }
+      InternalApiNetValueSpecs:  { get_param: InternalApiNetValueSpecsLeaf2 }
+
+  InternalNetworkLeaf3:
+    type: OS::TripleO::Network::InternalApi
+    properties:
+      InternalApiNetName:  { get_param: InternalApiNetNameLeaf3 }
+      InternalApiSubnetName:  { get_param: InternalApiSubnetNameLeaf3 }
+      InternalApiNetCidr:  { get_param: InternalApiNetCidrLeaf3 }
+      InternalApiAllocationPools:  { get_param: InternalApiAllocationPoolsLeaf3 }
+      InternalApiNetValueSpecs:  { get_param: InternalApiNetValueSpecsLeaf3 }
+
+  StorageMgmtNetwork:
+    type: OS::TripleO::Network::StorageMgmt
+
+  StorageNetwork:
+    type: OS::TripleO::Network::Storage
+
+  StorageNetworkLeaf1:
+    type: OS::TripleO::Network::Storage
+    properties:
+      StorageNetName: { get_param: StorageNetNameLeaf1 }
+      StorageSubnetName: { get_param: StorageSubnetNameLeaf1 }
+      StorageNetCidr: { get_param: StorageNetCidrLeaf1 }
+      StorageAllocationPools: { get_param: StorageAllocationPoolsLeaf1 }
+      StorageNetValueSpecs: { get_param: StorageNetValueSpecsLeaf1 }
+
+  StorageNetworkLeaf2:
+    type: OS::TripleO::Network::Storage
+    properties:
+      StorageNetName: { get_param: StorageNetNameLeaf2 }
+      StorageSubnetName: { get_param: StorageSubnetNameLeaf2 }
+      StorageNetCidr: { get_param: StorageNetCidrLeaf2 }
+      StorageAllocationPools: { get_param: StorageAllocationPoolsLeaf2 }
+      StorageNetValueSpecs: { get_param: StorageNetValueSpecsLeaf2 }
+
+  StorageNetworkLeaf3:
+    type: OS::TripleO::Network::Storage
+    properties:
+      StorageNetName: { get_param: StorageNetNameLeaf3 }
+      StorageSubnetName: { get_param: StorageSubnetNameLeaf3 }
+      StorageNetCidr: { get_param: StorageNetCidrLeaf3 }
+      StorageAllocationPools: { get_param: StorageAllocationPoolsLeaf3 }
+      StorageNetValueSpecs: { get_param: StorageNetValueSpecsLeaf3 }
+
+  TenantNetwork:
+    type: OS::TripleO::Network::Tenant
+
+  TenantNetworkLeaf1:
+    type: OS::TripleO::Network::Tenant
+    properties:
+      TenantNetName: { get_param: TenantNetNameLeaf1 }
+      TenantSubnetName: { get_param: TenantSubnetNameLeaf1 }
+      TenantNetCidr: { get_param: TenantNetCidrLeaf1 }
+      TenantAllocationPools: { get_param: TenantAllocationPoolsLeaf1 }
+      TenantNetValueSpecs: { get_param: TenantNetValueSpecsLeaf1 }
+
+  TenantNetworkLeaf2:
+    type: OS::TripleO::Network::Tenant
+    properties:
+      TenantNetName: { get_param: TenantNetNameLeaf2 }
+      TenantSubnetName: { get_param: TenantSubnetNameLeaf2 }
+      TenantNetCidr: { get_param: TenantNetCidrLeaf2 }
+      TenantAllocationPools: { get_param: TenantAllocationPoolsLeaf2 }
+      TenantNetValueSpecs: { get_param: TenantNetValueSpecsLeaf2 }
+
+  TenantNetworkLeaf3:
+    type: OS::TripleO::Network::Tenant
+    properties:
+      TenantNetName: { get_param: TenantNetNameLeaf3 }
+      TenantSubnetName: { get_param: TenantSubnetNameLeaf3 }
+      TenantNetCidr: { get_param: TenantNetCidrLeaf3 }
+      TenantAllocationPools: { get_param: TenantAllocationPoolsLeaf3 }
+      TenantNetValueSpecs: { get_param: TenantNetValueSpecsLeaf3 }
+
+  ManagementNetwork:
+    type: OS::TripleO::Network::Management
+
+  ManagementNetworkLeaf1:
+    type: OS::TripleO::Network::Management
+    properties:
+      ManagementNetName: { get_param: ManagementNetNameLeaf1 }
+      ManagementSubnetName: { get_param: ManagementSubnetNameLeaf1 }
+      ManagementNetCidr: { get_param: ManagementNetCidrLeaf1 }
+      ManagementAllocationPools: { get_param: ManagementAllocationPoolsLeaf1 }
+      ManagementNetValueSpecs: { get_param: ManagementNetValueSpecsLeaf1 }
+
+  ManagementNetworkLeaf2:
+    type: OS::TripleO::Network::Management
+    properties:
+      ManagementNetName: { get_param: ManagementNetNameLeaf2 }
+      ManagementSubnetName: { get_param: ManagementSubnetNameLeaf2 }
+      ManagementNetCidr: { get_param: ManagementNetCidrLeaf2 }
+      ManagementAllocationPools: { get_param: ManagementAllocationPoolsLeaf2 }
+      ManagementNetValueSpecs: { get_param: ManagementNetValueSpecsLeaf2 }
+
+  ManagementNetworkLeaf3:
+    type: OS::TripleO::Network::Management
+    properties:
+      ManagementNetName: { get_param: ManagementNetNameLeaf3 }
+      ManagementSubnetName: { get_param: ManagementSubnetNameLeaf3 }
+      ManagementNetCidr: { get_param: ManagementNetCidrLeaf3 }
+      ManagementAllocationPools: { get_param: ManagementAllocationPoolsLeaf3 }
+      ManagementNetValueSpecs: { get_param: ManagementNetValueSpecsLeaf3 }
+
+  NetworkExtraConfig:
+    type: OS::TripleO::Network::ExtraConfig

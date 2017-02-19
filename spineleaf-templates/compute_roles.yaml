@@ -1,0 +1,28 @@
+resource_registry:
+  OS::TripleO::Leaf1Compute::Net::SoftwareConfig: /home/stack/spineleaf-templates/network/nic-configs/leaf1-compute.yaml
+  OS::TripleO::Leaf2Compute::Net::SoftwareConfig: /home/stack/spineleaf-templates/network/nic-configs/leaf2-compute.yaml
+  OS::TripleO::Leaf3Compute::Net::SoftwareConfig: /home/stack/spineleaf-templates/network/nic-configs/leaf3-compute.yaml
+parameter_defaults:
+  ComputeCount: 0
+  Leaf1ComputeCount: 1
+  Leaf2ComputeCount: 1
+  Leaf3ComputeCount: 1
+  Leaf1SchedulerHints:
+    'capabilities:profile': 'leaf1-compute'
+  Leaf2SchedulerHints:
+    'capabilities:profile': 'leaf2-compute'
+  Leaf3SchedulerHints:
+    'capabilities:profile': 'leaf3-compute'
+  Leaf1ComputeInternalApiNetName: 'leaf1_internal_api'
+  Leaf2ComputeInternalApiNetName: 'leaf2_internal_api'
+  Leaf3ComputeInternalApiNetName: 'leaf3_internal_api'
+  Leaf1ComputeTenantNetName: 'leaf1_tenant'
+  Leaf2ComputeTenantNetName: 'leaf2_tenant'
+  Leaf3ComputeTenantNetName: 'leaf3_tenant'
+  Leaf1ComputeStorageNetName: 'leaf1_storage'
+  Leaf2ComputeStorageNetName: 'leaf2_storage'
+  Leaf3ComputeStorageNetName: 'leaf3_storage'
+  Leaf1ComputeManagementNetName: 'leaf1_management'
+  Leaf2ComputeManagementNetName: 'leaf2_management'
+  Leaf3ComputeManagementNetName: 'leaf3_management'
+

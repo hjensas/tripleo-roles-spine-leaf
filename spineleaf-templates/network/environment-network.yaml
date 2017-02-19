@@ -1,0 +1,195 @@
+# This template configures each role to use a pair of bonded nics (nic2 and
+# nic3) and configures an IP address on each relevant isolated network
+# for each role. This template assumes use of network-isolation.yaml.
+#
+# FIXME: if/when we add functionality to heatclient to include heat
+# environment files we should think about using it here to automatically
+# include network-isolation.yaml.
+resource_registry:
+  # 
+  # Network inteface configuration for each node type
+  #
+  OS::TripleO::BlockStorage::Net::SoftwareConfig: /home/stack/spineleaf-templates/network/nic-configs/cinder-storage.yaml
+  OS::TripleO::Compute::Net::SoftwareConfig: /home/stack/spineleaf-templates/network/nic-configs/compute.yaml
+  OS::TripleO::Controller::Net::SoftwareConfig: /home/stack/spineleaf-templates/network/nic-configs/controller.yaml
+  OS::TripleO::ObjectStorage::Net::SoftwareConfig: /home/stack/spineleaf-templates/network/nic-configs/swift-storage.yaml
+  OS::TripleO::CephStorage::Net::SoftwareConfig: /home/stack/spineleaf-templates/network/nic-configs/ceph-storage.yaml
+
+  # A custom networks.yaml with the leaf nets defined
+  OS::TripleO::Network: /home/stack/spineleaf-templates/network/networks.yaml
+
+parameter_defaults:
+  # This sets 'external_network_bridge' in l3_agent.ini to an empty string
+  # so that external networks act like provider bridge networks (they
+  # will plug into br-int instead of br-ex)
+  NeutronExternalNetworkBridge: "''"
+
+  ###
+  # Internal API networks
+  InternalApiNetCidr: 172.20.4.0/26
+  InternalApiAllocationPools: [{'start': '172.20.4.10', 'end': '172.20.4.20'}]
+  InternalApiNetworkVlanID: 640
+  InteranlApiIpSubnetRouter: 172.20.4.62
+
+  InternalApiNetNameLeaf1: 'leaf1_internal_api'
+  InternalApiSubnetNameLeaf1: 'leaf1_internal_api_subnet'
+  InternalApiNetCidrLeaf1: 172.20.4.64/26
+  InternalApiAllocationPoolsLeaf1: [{'start': '172.20.4.70', 'end': '172.20.4.80'}]
+  InternalApiNetworkVlanIDLeaf1: 641
+  InternalApiNetValueSpecsLeaf1:
+    'provider:physical_network': 'leaf1_internal_api'  
+    'provider:network_type': 'flat'
+  InteranlApiIpSubnetRouterLeaf1: 172.20.4.126
+
+  InternalApiNetNameLeaf2: 'leaf2_internal_api'
+  InternalApiSubnetNameLeaf2: 'leaf2_internal_api_subnet'
+  InternalApiNetCidrLeaf2: 172.20.4.128/26
+  InternalApiAllocationPoolsLeaf2: [{'start': '172.20.4.130', 'end': '172.20.4.140'}]
+  InternalApiNetworkVlanIDLeaf2: 642
+  InternalApiNetValueSpecsLeaf2:
+    'provider:physical_network': 'leaf2_internal_api' 
+    'provider:network_type': 'flat'
+  InteranlApiIpSubnetRouterLeaf1: 172.20.4.190
+
+  InternalApiNetNameLeaf3: 'leaf3_internal_api'
+  InternalApiSubnetNameLeaf3: 'leaf3_internal_api_subnet'
+  InternalApiNetCidrLeaf3: 172.20.4.192/26
+  InternalApiAllocationPoolsLeaf3: [{'start': '172.20.4.200', 'end': '172.20.4.210'}]
+  InternalApiNetworkVlanIDLeaf3: 643
+  InternalApiNetValueSpecsLeaf3:
+    'provider:physical_network': 'leaf3_internal_api'
+    'provider:network_type': 'flat'
+  InteranlApiIpSubnetRouterLeaf1: 172.20.4.254
+
+  ###
+  # Tenant Networks
+  TenantNetCidr: 172.20.5.0/24
+  TenantAllocationPools: [{'start': '172.20.5.10', 'end': '172.20.5.20'}]
+  TenantNetworkVlanID: 650
+  TenantIpSubnetRouter: 172.20.5.62
+
+  TenantNetNameLeaf1: 'leaf1_tenant'
+  TenantSubnetNameLeaf1: 'leaf1_tenant_subnet'
+  TenantNetCidrLeaf1: 172.20.5.64/24
+  TenantAllocationPoolsLeaf1: [{'start': '172.20.5.70', 'end': '172.20.5.80'}]
+  TenantNetworkVlanIDLeaf1: 651
+  TenantNetValueSpecsLeaf1:
+    'provider:physical_network': 'leaf1_telant'
+    'provider:network_type': 'flat'
+  TenantIpSubnetRouterLeaf1: 172.20.5.126
+
+  TenantNetNameLeaf2: 'leaf2_tenant'
+  TenantSubnetNameLeaf2: 'leaf2_tenant_subnet'
+  TenantNetCidrLeaf2: 172.20.5.128/24
+  TenantAllocationPoolsLeaf2: [{'start': '172.20.5.140', 'end': '172.20.5.150'}]
+  TenantNetworkVlanIDLeaf2: 652
+  TenantNetValueSpecsLeaf2:
+    'provider:physical_network': 'leaf2_telant'
+    'provider:network_type': 'flat'
+  TenantIpSubnetRouterLeaf2: 172.20.5.190
+
+  TenantNetNameLeaf3: 'leaf3_tenant'
+  TenantSubnetNameLeaf3: 'leaf3_tenant_subnet'
+  TenantNetCidrLeaf3: 172.20.5.192/24
+  TenantAllocationPoolsLeaf3: [{'start': '172.20.5.210', 'end': '172.20.5.220'}]
+  TenantNetworkVlanIDLeaf3: 653
+  TenantNetValueSpecsLeaf3:
+    'provider:physical_network': 'leaf3_telant'
+    'provider:network_type': 'flat'
+  TenantIpSubnetRouterLeaf3: 172.20.5.254
+
+  ###
+  # Storage Networks
+  StorageNetCidr: 172.20.6.0/26
+  StorageAllocationPools: [{'start': '172.20.6.10', 'end': '172.20.6.20'}]
+  StorageNetworkVlanID: 660
+  StorageIpSubnetRouter: 172.20.6.62
+
+  StorageNetNameLeaf1: 'leaf1_storage'
+  StorageSubnetNameLeaf1: 'leaf1_storage_subnet'
+  StorageNetCidrLeaf1: 172.20.6.64/26
+  StorageAllocationPoolsLeaf1: [{'start': '172.20.6.70', 'end': '172.20.6.80'}]
+  StorageNetworkVlanIDLeaf1: 661
+  StorageNetValueSpecsLeaf1:
+    'provider:physical_network': 'leaf1_storage'
+    'provider:network_type': 'flat'
+  StorageIpSubnetRouterLeaf1: 172.20.6.126
+  
+  StorageNetNameLeaf2: 'leaf2_storage'
+  StorageSubnetNameLeaf2: 'leaf2_storage_subnet'
+  StorageNetCidrLeaf2: 172.20.6.128/26
+  StorageAllocationPoolsLeaf2: [{'start': '172.20.6.140', 'end': '172.20.6.150'}]
+  StorageNetworkVlanIDLeaf2: 662
+  StorageNetValueSpecsLeaf2:
+    'provider:physical_network': 'leaf2_storage'
+    'provider:network_type': 'flat'
+  StorageIpSubnetRouterLeaf2: 172.20.6.190
+
+  StorageNetNameLeaf3: 'leaf3_storage'
+  StorageSubnetNameLeaf3: 'leaf3_storage_subnet'
+  StorageNetCidrLeaf3: 172.20.6.192/26
+  StorageAllocationPoolsLeaf3: [{'start': '172.20.6.210', 'end': '172.20.6.220'}]
+  StorageNetworkVlanIDLeaf3: 663
+  StorageNetValueSpecsLeaf3:
+    'provider:physical_network': 'leaf3_storage'
+    'provider:network_type': 'flat'
+  StorageIpSubnetRouterLeaf3: 172.20.6.254
+
+  ###
+  # Storage Management network
+  StorageMgmtNetCidr: 172.20.7.0/26
+  StorageMgmtAllocationPools: [{'start': '172.20.7.10', 'end': '172.20.7.20'}]
+  StorageMgmtNetworkVlanID: 670
+
+  ###
+  # Management networks
+  ManagementNetCidr: 172.20.3.0/26
+  ManagementAllocationPools: [{'start': '172.20.3.10', 'end': '172.20.3.20'}]
+  ManagementNetworkVlanID: 630
+  ManagementInterfaceDefaultRoute: 172.20.3.62
+
+  ManagementNetNameLeaf1: 'leaf1_management'
+  ManagementSubnetNameLeaf1: 'leaf1_management_subnet'
+  ManagementNetCidrLeaf1: 172.20.3.64/26
+  ManagementAllocationPoolsLeaf1: [{'start': '172.20.3.70', 'end': '172.20.3.80'}]
+  ManagementNetworkVlanIDLeaf1: 631
+  ManagementNetValueSpecsLeaf1:
+    'provider:physical_network': 'leaf1_management'
+    'provider:network_type': 'flat'
+  ManagementInterfaceDefaultRouteLeaf1: 172.20.3.126
+
+  ManagementNetNameLeaf2: 'leaf2_management'
+  ManagementSubnetNameLeaf2: 'leaf2_management_subnet'
+  ManagementNetCidrLeaf2: 172.20.3.128/26
+  ManagementAllocationPoolsLeaf2: [{'start': '172.20.3.140', 'end': '172.20.3.150'}]
+  ManagementNetworkVlanIDLeaf2: 632
+  ManagementNetValueSpecsLeaf2:
+    'provider:physical_network': 'leaf2_management'
+    'provider:network_type': 'flat'
+  ManagementInterfaceDefaultRouteLeaf2: 172.20.3.190
+
+  ManagementNetNameLeaf3: 'leaf3_management'
+  ManagementSubnetNameLeaf3: 'leaf3_management_subnet'
+  ManagementNetCidrLeaf3: 172.20.3.192/26
+  ManagementAllocationPoolsLeaf3: [{'start': '172.20.3.210', 'end': '172.20.3.220'}]
+  ManagementNetworkVlanIDLeaf3: 633
+  ManagementNetValueSpecsLeaf3:
+    'provider:physical_network': 'leaf3_management'
+    'provider:network_type': 'flat'
+  ManagementInterfaceDefaultRouteLeaf3: 172.20.3.254
+
+  ### 
+  # External networks
+  ExternalNetCidr: 172.20.1.0/26
+  ExternalAllocationPools: [{'start': '172.20.1.10', 'end': '172.20.1.30'}]
+  ExternalInterfaceDefaultRoute: 172.20.1.62
+  ExternalNetworkVlanID: 610
+
+  ###
+  # Control Plane Network
+  # Gateway router for the provisioning network (or Undercloud IP)
+  ControlPlaneDefaultRoute: 172.19.0.254
+  # The IP address of the EC2 metadata server. Generally the IP of the Undercloud
+  EC2MetadataIp: 172.19.0.1
+  # Define the DNS servers (maximum 2) for the overcloud nodes
+  DnsServers: ["172.19.0.254"]

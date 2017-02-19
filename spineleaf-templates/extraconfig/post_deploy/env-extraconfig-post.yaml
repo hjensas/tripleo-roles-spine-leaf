@@ -1,0 +1,2 @@
+resource_registry:
+  OS::TripleO::NodeExtraConfigPost: /home/stack/spineleaf-templates/extraconfig/post-config/ExtraConfigPost-multiple.yaml

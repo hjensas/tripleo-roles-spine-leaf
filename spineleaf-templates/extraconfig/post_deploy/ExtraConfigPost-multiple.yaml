@@ -1,0 +1,30 @@
+heat_template_version: 2014-10-16
+description: 'Extra Post-Deployment Config, multiple'
+
+parameters:
+  server:
+    type: string
+
+resources:
+
+  # Note depends_on may be used for serialization if ordering is important
+  ExtraPostConfig1:
+    type: /home/stack/spineleaf-templates/extraconfig/post_deploy/extra-post-config1.yaml
+    properties:
+        server: {get_param: server}
+
+
+  # Note depends_on may be used for serialization if ordering is important
+  ExtraPostConfig2:
+    type: /home/stack/spineleaf-templates/extraconfig/post_deploy/extra-post-config2.yaml
+    properties:
+        server: {get_param: server}
+
+
+outputs:  
+  deploy_stdout:  
+    value:  
+      list_join:  
+      - ''  
+      - - {get_attr: [ExtraPostConfig1, deploy_stdout]}  
+        - {get_attr: [ExtraPostConfig2, deploy_stdout]}

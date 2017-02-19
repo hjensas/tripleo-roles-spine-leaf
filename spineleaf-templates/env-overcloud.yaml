@@ -1,0 +1,7 @@
+parameter_defaults:
+  OvercloudControlFlavor: control
+  OvercloudComputeFlavor: compute
+  PublicVirtualFixedIPs: [{'ip_address':'172.20.1.5'}]
+  TimeZone: 'Europe/Stockholm'
+#  CloudName: 'osp10.lab.example.com'
+#  CloudDomain: 'lab.example.com'
