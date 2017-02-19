@@ -240,7 +240,7 @@ resources:
                 -
                   type: vlan
                   device: nic2
-                  vlan_id: {get_parm: ManagementNetworkVlanIDLeaf1}
+                  vlan_id: {get_param: ManagementNetworkVlanIDLeaf1}
                   addresses:
                     -
                       ip_netmask: {get_param: ManagementIpSubnet}
