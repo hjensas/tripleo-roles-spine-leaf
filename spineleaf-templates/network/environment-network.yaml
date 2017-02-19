@@ -29,7 +29,7 @@ parameter_defaults:
   InternalApiNetCidr: 172.20.4.0/26
   InternalApiAllocationPools: [{'start': '172.20.4.10', 'end': '172.20.4.20'}]
   InternalApiNetworkVlanID: 640
-  InteranlApiIpSubnetRouter: 172.20.4.62
+  InternalApiIpSubnetRouter: 172.20.4.62
 
   InternalApiNetNameLeaf1: 'leaf1_internal_api'
   InternalApiSubnetNameLeaf1: 'leaf1_internal_api_subnet'
@@ -39,7 +39,7 @@ parameter_defaults:
   InternalApiNetValueSpecsLeaf1:
     'provider:physical_network': 'leaf1_internal_api'  
     'provider:network_type': 'flat'
-  InteranlApiIpSubnetRouterLeaf1: 172.20.4.126
+  InternalApiIpSubnetRouterLeaf1: 172.20.4.126
 
   InternalApiNetNameLeaf2: 'leaf2_internal_api'
   InternalApiSubnetNameLeaf2: 'leaf2_internal_api_subnet'
@@ -49,7 +49,7 @@ parameter_defaults:
   InternalApiNetValueSpecsLeaf2:
     'provider:physical_network': 'leaf2_internal_api' 
     'provider:network_type': 'flat'
-  InteranlApiIpSubnetRouterLeaf1: 172.20.4.190
+  InternalApiIpSubnetRouterLeaf1: 172.20.4.190
 
   InternalApiNetNameLeaf3: 'leaf3_internal_api'
   InternalApiSubnetNameLeaf3: 'leaf3_internal_api_subnet'
@@ -59,7 +59,7 @@ parameter_defaults:
   InternalApiNetValueSpecsLeaf3:
     'provider:physical_network': 'leaf3_internal_api'
     'provider:network_type': 'flat'
-  InteranlApiIpSubnetRouterLeaf1: 172.20.4.254
+  InternalApiIpSubnetRouterLeaf1: 172.20.4.254
 
   ###
   # Tenant Networks

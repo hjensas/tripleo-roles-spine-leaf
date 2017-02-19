@@ -78,6 +78,32 @@ parameters:
     description: The IP address of the EC2 metadata server.
     type: string
 
+  InternalApiIpSubnetRouter:
+    type: string
+  InternalApiIpSubnetRouterLeaf1:
+    type: string
+  InternalApiIpSubnetRouterLeaf1:
+    type: string
+  InternalApiIpSubnetRouterLeaf1:
+    type: string
+  TenantIpSubnetRouter:
+    type: string
+  TenantIpSubnetRouterLeaf1:
+    type: string
+  TenantIpSubnetRouterLeaf2:
+    type: string
+  TenantIpSubnetRouterLeaf3:
+    type: string
+  StorageIpSubnetRouter:
+    type: string
+  StorageIpSubnetRouterLeaf1:
+    type: string
+  StorageIpSubnetRouterLeaf2:
+    type: string
+  StorageIpSubnetRouterLeaf3:
+    type: string
+
+
   InternalApiNetCidrLeaf1:
     type: string
   InternalApiNetCidrLeaf2:
@@ -158,15 +184,15 @@ resources:
                     -
                       default: false
                       ip_netmask: {get_param: InternalApiNetCidrLeaf1}
-                      next_hop: {get_param: InternalApiIpSubnetRoute}
+                      next_hop: {get_param: InternalApiIpSubnetRouter}
                     -
                       default: false
                       ip_netmask: {get_param: InternalApiNetCidrLeaf2}
-                      next_hop: {get_param: InternalApiIpSubnetRoute}
+                      next_hop: {get_param: InternalApiIpSubnetRouter}
                     -
                       default: false
                       ip_netmask: {get_param: InternalApiNetCidrLeaf3}
-                      next_hop: {get_param: InternalApiIpSubnetRoute}
+                      next_hop: {get_param: InternalApiIpSubnetRouter}
                 -
                   type: vlan
                   device: nic2
@@ -205,15 +231,15 @@ resources:
                     -
                       default: false
                       ip_netmask: {get_param: TenantNetCidrLeaf1}
-                      next_hop: {get_param: InteranlApiIpSubnetRouter}
+                      next_hop: {get_param: InternalApiIpSubnetRouter}
                     -
                       default: false
                       ip_netmask: {get_param: TenantNetCidrLeaf2}
-                      next_hop: {get_param: InteranlApiIpSubnetRouter}
+                      next_hop: {get_param: InternalApiIpSubnetRouter}
                     -
                       default: false
                       ip_netmask: {get_param: TenantNetCidrLeaf3}
-                      next_hop: {get_param: InteranlApiIpSubnetRouter}
+                      next_hop: {get_param: InternalApiIpSubnetRouter}
                 -
                   type: vlan
                   name: nic2
