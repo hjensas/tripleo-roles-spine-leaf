@@ -49,7 +49,7 @@ parameter_defaults:
   InternalApiNetValueSpecsLeaf2:
     'provider:physical_network': 'leaf2_internal_api' 
     'provider:network_type': 'flat'
-  InternalApiIpSubnetRouterLeaf1: 172.20.4.190
+  InternalApiIpSubnetRouterLeaf2: 172.20.4.190
 
   InternalApiNetNameLeaf3: 'leaf3_internal_api'
   InternalApiSubnetNameLeaf3: 'leaf3_internal_api_subnet'
@@ -59,7 +59,7 @@ parameter_defaults:
   InternalApiNetValueSpecsLeaf3:
     'provider:physical_network': 'leaf3_internal_api'
     'provider:network_type': 'flat'
-  InternalApiIpSubnetRouterLeaf1: 172.20.4.254
+  InternalApiIpSubnetRouterLeaf3: 172.20.4.254
 
   ###
   # Tenant Networks

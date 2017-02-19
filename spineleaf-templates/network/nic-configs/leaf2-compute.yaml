@@ -97,7 +97,12 @@ parameters:
     type: string
   StorageIpSubnetRouterLeaf3:
     type: string
-
+  ManagementInterfaceDefaultRouteLeaf1:
+    type: string
+  ManagementInterfaceDefaultRouteLeaf2:
+    type: string
+  ManagementInterfaceDefaultRouteLeaf3:
+    type: string
 
   InternalApiNetCidr:
     type: string
