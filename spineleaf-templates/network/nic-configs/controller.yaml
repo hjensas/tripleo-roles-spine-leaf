@@ -94,7 +94,7 @@ parameters:
     type: string
   TenantIpSubnetRouterLeaf3:
     type: string
-  StorageIpSubnetRouter:
+  StorageIpSubnetRouter
     type: string
   StorageIpSubnetRouterLeaf1:
     type: string
@@ -210,15 +210,15 @@ resources:
                     -
                       default: false
                       ip_netmask: {get_param: StorageNetCidrLeaf1}
-                      next_hop: {get_param: StorageNetIpSubnetRouter}
+                      next_hop: {get_param: StorageIpSubnetRouter}
                     -
                       default: false
                       ip_netmask: {get_param: StorageNetCidrLeaf2}
-                      next_hop: {get_param: StorageNetIpSubnetRouter}
+                      next_hop: {get_param: StorageIpSubnetRouter}
                     -
                       default: false
                       ip_netmask: {get_param: StorageNetCidrLeaf3}
-                      next_hop: {get_param: StorageNetIpSubnetRouter}
+                      next_hop: {get_param: StorageIpSubnetRouter}
                 -
                   type: vlan
                   device: nic2
