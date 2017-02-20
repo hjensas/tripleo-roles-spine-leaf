@@ -63,14 +63,14 @@ parameter_defaults:
 
   ###
   # Tenant Networks
-  TenantNetCidr: 172.20.5.0/24
+  TenantNetCidr: 172.20.5.0/26
   TenantAllocationPools: [{'start': '172.20.5.10', 'end': '172.20.5.20'}]
   TenantNetworkVlanID: 650
   TenantIpSubnetRouter: 172.20.5.62
 
   TenantNetNameLeaf1: 'leaf1_tenant'
   TenantSubnetNameLeaf1: 'leaf1_tenant_subnet'
-  TenantNetCidrLeaf1: 172.20.5.64/24
+  TenantNetCidrLeaf1: 172.20.5.64/26
   TenantAllocationPoolsLeaf1: [{'start': '172.20.5.70', 'end': '172.20.5.80'}]
   TenantNetworkVlanIDLeaf1: 651
   TenantNetValueSpecsLeaf1:
@@ -80,7 +80,7 @@ parameter_defaults:
 
   TenantNetNameLeaf2: 'leaf2_tenant'
   TenantSubnetNameLeaf2: 'leaf2_tenant_subnet'
-  TenantNetCidrLeaf2: 172.20.5.128/24
+  TenantNetCidrLeaf2: 172.20.5.128/26
   TenantAllocationPoolsLeaf2: [{'start': '172.20.5.140', 'end': '172.20.5.150'}]
   TenantNetworkVlanIDLeaf2: 652
   TenantNetValueSpecsLeaf2:
@@ -90,7 +90,7 @@ parameter_defaults:
 
   TenantNetNameLeaf3: 'leaf3_tenant'
   TenantSubnetNameLeaf3: 'leaf3_tenant_subnet'
-  TenantNetCidrLeaf3: 172.20.5.192/24
+  TenantNetCidrLeaf3: 172.20.5.192/26
   TenantAllocationPoolsLeaf3: [{'start': '172.20.5.210', 'end': '172.20.5.220'}]
   TenantNetworkVlanIDLeaf3: 653
   TenantNetValueSpecsLeaf3:
